@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VATOS1 İSAS | Biyotaklitçi İnsansız Sualtı Sistemleri</title>
+<title>VATOSTEAM | Biyotaklitçi İnsansız Sualtı Sistemleri</title>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
@@ -20,13 +20,13 @@ tailwind.config = {
 <!-- Üst menü -->
 <header class="fixed top-0 inset-x-0 z-50 bg-bg/90 backdrop-blur border-b border-line">
   <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-    <a href="#" class="font-extrabold tracking-widest text-white text-lg">VATOS<span class="text-cyan">1</span></a>
-    <nav class="hidden md:flex gap-8 text-sm text-slate-400">
-      <a href="#about" class="hover:text-white">Hakkımızda</a>
-      <a href="#specs" class="hover:text-white">Donanım</a>
-      <a href="#goals" class="hover:text-white">Yarışmalar</a>
-      <a href="#sponsors" class="hover:text-white">Sponsorlarımız</a>
-      <a href="#tiers" class="hover:text-white">Paketler</a>
+    <a href="#" class="font-extrabold tracking-widest text-white text-lg">VATOS<span class="text-cyan">TEAM</span></a>
+    <nav class="hidden md:flex gap-8 text-sm text-slate-400" aria-label="Ana navigasyon">
+      <a href="#about" data-section="about" class="nav-link">Hakkımızda</a>
+      <a href="#specs" data-section="specs" class="nav-link">Donanım</a>
+      <a href="#goals" data-section="goals" class="nav-link">Yarışmalar</a>
+      <a href="#sponsors" data-section="sponsors" class="nav-link">Sponsorlarımız</a>
+      <a href="#tiers" data-section="tiers" class="nav-link">Paketler</a>
     </nav>
     <a href="#contact" class="text-sm font-semibold px-4 py-2 rounded-lg bg-cyan text-bg hover:brightness-110">Sponsor Ol</a>
   </div>
@@ -286,10 +286,32 @@ tailwind.config = {
 
 </main>
 
-<footer class="border-t border-line py-8 px-5 text-sm text-slate-500">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
-    <span class="font-bold text-white tracking-widest">VATOS<span class="text-cyan">1</span> İSAS</span>
-    <span>&copy; 2026 VATOS1 İSAS. Tüm hakları saklıdır.</span>
+<footer class="border-t border-line bg-card/30 px-5 pt-14 pb-8 text-sm text-slate-400">
+  <div class="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+    <div class="lg:col-span-2">
+      <a href="#" class="font-extrabold tracking-widest text-white text-lg">VATOS<span class="text-cyan">TEAM</span></a>
+      <p class="mt-4 max-w-md leading-relaxed">Biyotaklitçi mühendislik ve otonom sualtı sistemleri geliştiren öğrenci takımı. Geleceğin keşif teknolojilerini birlikte tasarlıyoruz.</p>
+    </div>
+    <div>
+      <h2 class="text-xs font-semibold tracking-widest text-white uppercase">Hızlı bağlantılar</h2>
+      <div class="mt-4 flex flex-col gap-3">
+        <a href="#about" class="hover:text-cyan transition-colors">Hakkımızda</a>
+        <a href="#specs" class="hover:text-cyan transition-colors">Donanım</a>
+        <a href="#tiers" class="hover:text-cyan transition-colors">Sponsorluk paketleri</a>
+        <a href="#contact" class="hover:text-cyan transition-colors">İletişim</a>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-xs font-semibold tracking-widest text-white uppercase">Bize ulaşın</h2>
+      <div class="mt-4 flex flex-col gap-3">
+        <a href="https://wa.me/900000000000" target="_blank" rel="noreferrer" class="hover:text-cyan transition-colors">WhatsApp</a>
+        <a href="https://instagram.com/vatosteam" target="_blank" rel="noreferrer" class="hover:text-cyan transition-colors">Instagram · @vatosteam</a>
+        <a href="mailto:info@vatosteam.com" class="hover:text-cyan transition-colors">info@vatosteam.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto border-t border-line pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+    <span>&copy; 2026 VATOSTEAM. Tüm hakları saklıdır.</span>
   </div>
 </footer>
 
@@ -305,6 +327,50 @@ function sendForm(e) {
   e.target.reset();
   setTimeout(() => ok.classList.add('hidden'), 6000);
 }
+
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('main section[id]');
+function updateActiveSection() {
+  const activeSection = [...sections].reverse().find((section) => section.getBoundingClientRect().top <= 140) || sections[0];
+  navLinks.forEach((link) => {
+    const isActive = activeSection && link.dataset.section === activeSection.id;
+    link.classList.toggle('is-active', isActive);
+    link.style.setProperty('color', isActive ? '#00f0ff' : '', isActive ? 'important' : '');
+  });
+}
+window.addEventListener('scroll', updateActiveSection, { passive: true });
+updateActiveSection();
 </script>
+<style>
+.nav-link {
+  position: relative;
+  transition: color 180ms ease;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 2px;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+.nav-link:hover {
+  color: white !important;
+}
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+.nav-link.is-active {
+  color: #00f0ff !important;
+}
+.nav-link.is-active::after {
+  background: #00f0ff;
+}
+</style>
 </body>
 </html>
