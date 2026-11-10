@@ -261,14 +261,14 @@ tailwind.config = {
       <h2 class="text-3xl font-bold text-white">Başvuru formu</h2>
       <p class="text-slate-400 text-sm mt-2">Projemize ortak olmak için bize yazın.</p>
     </div>
-    <form onsubmit="sendForm(event)" class="space-y-4">
+    <form action="https://formspree.io/f/mzerpzbp" method="POST" class="space-y-4">
       <div class="grid sm:grid-cols-2 gap-4">
-        <input required placeholder="Ad Soyad" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
-        <input required placeholder="Firma / Kurum" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
+        <input required name="name" placeholder="Ad Soyad" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
+        <input required name="company" placeholder="Firma / Kurum" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
-        <input required type="email" placeholder="E-posta" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
-        <select id="tierSelect" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
+        <input required type="email" name="email" placeholder="E-posta" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
+        <select id="tierSelect" name="tier" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan">
           <option value="Genel">Genel bilgi</option>
           <option value="Bronz">Bronz</option>
           <option value="Gümüş">Gümüş</option>
@@ -277,7 +277,8 @@ tailwind.config = {
           <option value="Ayni">Ayni destek</option>
         </select>
       </div>
-      <textarea required rows="4" placeholder="Mesajınız" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan"></textarea>
+      <textarea required name="message" rows="4" placeholder="Mesajınız" class="w-full px-4 py-3 rounded-lg bg-bg border border-line text-sm text-white focus:outline-none focus:border-cyan"></textarea>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
       <button class="w-full py-3 rounded-lg bg-cyan text-bg font-semibold hover:brightness-110">Gönder</button>
     </form>
     <p id="formOk" class="hidden mt-4 text-center text-sm text-emerald-400">Başvurunuz ekibimize iletildi, en kısa sürede dönüş yapacağız.</p>
@@ -304,8 +305,14 @@ tailwind.config = {
     <div>
       <h2 class="text-xs font-semibold tracking-widest text-white uppercase">Bize ulaşın</h2>
       <div class="mt-4 flex flex-col gap-3">
-        <a href="https://wa.me/900000000000" target="_blank" rel="noreferrer" class="hover:text-cyan transition-colors">WhatsApp</a>
-        <a href="https://instagram.com/vatosteam" target="_blank" rel="noreferrer" class="hover:text-cyan transition-colors">Instagram · @vatosteam</a>
+        <a href="https://wa.me/905078618325?text=Merhaba%2C%20VATOSTEAM%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+          <svg aria-hidden="true" class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.88c0 2.1.55 4.15 1.6 5.96L.1 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.44h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.24-6.15-3.45-8.43ZM12.09 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.74.98 1-3.65-.23-.37a9.88 9.88 0 0 1-1.52-5.29C2.18 6.43 6.62 2 12.09 2a9.86 9.86 0 0 1 7.01 2.91 9.88 9.88 0 0 1 2.9 7.03c0 5.47-4.45 9.86-9.91 9.86Zm5.42-7.4c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.78-1.47-1.74-1.64-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.25-.6-.5-.52-.68-.53h-.58c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5s1.07 2.9 1.22 3.1c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.08-.12-.28-.2-.58-.35Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/vatosteam1/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors">
+          <svg aria-hidden="true" class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Instagram · @vatosteam1
+        </a>
         <a href="mailto:info@vatosteam.com" class="hover:text-cyan transition-colors">info@vatosteam.com</a>
       </div>
     </div>
